@@ -31,10 +31,6 @@
 			"extensions": [
 				"github.copilot",
 				"github.copilot-chat",
-				"ms-python.debugpy",
-				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"ms-python.vscode-python-envs",
 				"ms-vscode.cpptools",
 				"ranch-hand-robotics.rde-pack",
 				"ranch-hand-robotics.rde-ros-2",
