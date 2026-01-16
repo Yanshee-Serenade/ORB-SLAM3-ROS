@@ -2,10 +2,9 @@
 {
 	"name": "ORB-SLAM3-ROS Dev",
 	"dockerComposeFile": [
-		"../../docker-compose.yml",
 		"docker-compose.dev.yml"
 	],
-	"service": "orbslam3",
+	"service": "orbslam3-ros-dev",
 	"workspaceFolder": "/overlay_ws/src/orb_slam3_ros",
 	"remoteUser": "aut",
 
