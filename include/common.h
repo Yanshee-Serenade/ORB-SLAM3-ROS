@@ -29,7 +29,6 @@
 #include <message_filters/time_synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
 
-#include <orb_slam3_ros/GetTrackingData.h>
 #include <orb_slam3_ros/SaveMap.h> // This file is created automatically, see here http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv#Creating_a_srv
 
 // ORB-SLAM3-specific libraries
@@ -57,6 +56,9 @@ void publish_topics(ros::Time, Eigen::Vector3f = Eigen::Vector3f::Zero());
 void publish_camera_pose(Sophus::SE3f, ros::Time);
 void publish_tracking_img(cv::Mat, ros::Time);
 void publish_tracked_points(std::vector<ORB_SLAM3::MapPoint*>, ros::Time);
+void publish_tracked_points_detailed(std::vector<ORB_SLAM3::MapPoint*> tracked_map_points, 
+                                     std::vector<cv::KeyPoint> tracked_keypoints,
+                                     Sophus::SE3f Twc, ros::Time msg_time);
 void publish_keypoints(std::vector<ORB_SLAM3::MapPoint*>, std::vector<cv::KeyPoint>, ros::Time);
 sensor_msgs::PointCloud2 keypoints_to_pointcloud(std::vector<cv::KeyPoint>&, ros::Time);
 
@@ -67,8 +69,6 @@ void publish_kf_markers(std::vector<Sophus::SE3f>, ros::Time);
 
 bool save_map_srv(orb_slam3_ros::SaveMap::Request&, orb_slam3_ros::SaveMap::Response&);
 bool save_traj_srv(orb_slam3_ros::SaveMap::Request&, orb_slam3_ros::SaveMap::Response&);
-bool get_tracking_data_srv(orb_slam3_ros::GetTrackingData::Request &req,
-                            orb_slam3_ros::GetTrackingData::Response &res);
 
 cv::Mat SE3f_to_cvMat(Sophus::SE3f);
 tf::Transform SE3f_to_tfTransform(Sophus::SE3f);

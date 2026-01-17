@@ -65,7 +65,6 @@ find_package(Pangolin REQUIRED)
 add_service_files(
   FILES
   SaveMap.srv
-  GetTrackingData.srv
 )
 
 generate_messages(
