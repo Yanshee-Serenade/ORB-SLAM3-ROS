@@ -1492,7 +1492,6 @@ Sophus::SE3f Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat 
     //cout << "GrabImageStereo" << endl;
 
     mImGray = imRectLeft;
-    mImColor = imRectLeft.clone();
     cv::Mat imGrayRight = imRectRight;
     mImRight = imRectRight;
 
@@ -1557,7 +1556,6 @@ Sophus::SE3f Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat 
 Sophus::SE3f Tracking::GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const double &timestamp, string filename)
 {
     mImGray = imRGB;
-    mImColor = imRGB.clone();
     cv::Mat imDepth = imD;
 
     if(mImGray.channels()==3)
@@ -1604,7 +1602,6 @@ Sophus::SE3f Tracking::GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, co
 Sophus::SE3f Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp, string filename)
 {
     mImGray = im;
-    mImColor = im.clone();
     if(mImGray.channels()==3)
     {
         if(mbRGB)
