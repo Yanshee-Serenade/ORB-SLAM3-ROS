@@ -143,22 +143,23 @@ System::System(const string &strVocFile, const string &strSettingsFile,
       cout << "Error to load the file, please try with other session file or "
               "vocabulary file"
            << endl;
-      exit(-1);
+      mpAtlas = new Atlas(0);
+    } else {
+      // mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
+
+      // cout << "KF in DB: " << mpKeyFrameDatabase->mnNumKFs << "; words: " <<
+      // mpKeyFrameDatabase->mnNumWords << endl;
+
+      loadedAtlas = true;
+
+      mpAtlas->CreateNewMap();
+
+      // clock_t timeElapsed = clock() - start;
+      // unsigned msElapsed = timeElapsed / (CLOCKS_PER_SEC / 1000);
+      // cout << "Binary file read in " << msElapsed << " ms" << endl;
+
+      // usleep(10*1000*1000);
     }
-    // mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
-
-    // cout << "KF in DB: " << mpKeyFrameDatabase->mnNumKFs << "; words: " <<
-    // mpKeyFrameDatabase->mnNumWords << endl;
-
-    loadedAtlas = true;
-
-    mpAtlas->CreateNewMap();
-
-    // clock_t timeElapsed = clock() - start;
-    // unsigned msElapsed = timeElapsed / (CLOCKS_PER_SEC / 1000);
-    // cout << "Binary file read in " << msElapsed << " ms" << endl;
-
-    // usleep(10*1000*1000);
   }
 
   if (mSensor == IMU_STEREO || mSensor == IMU_MONOCULAR || mSensor == IMU_RGBD)
@@ -1472,7 +1473,7 @@ bool System::LoadAtlas(int type) {
 
   string pathLoadFileName = "";
   pathLoadFileName = pathLoadFileName.append(mStrLoadAtlasFromFile);
-  // pathLoadFileName = pathLoadFileName.append(".osa");
+  pathLoadFileName = pathLoadFileName.append(".osa");
 
   if (type == TEXT_FILE) // File text
   {
