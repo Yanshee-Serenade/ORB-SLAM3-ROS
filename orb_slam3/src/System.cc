@@ -87,7 +87,7 @@ System::System(const string &strVocFile, const string &strSettingsFile,
   if (!node.empty() && node.isString() && node.string() == "1.0") {
     settings_ = new Settings(strSettingsFile, mSensor);
 
-    // mStrLoadAtlasFromFile = settings_->atlasLoadFile();
+    mStrLoadAtlasFromFile = settings_->atlasLoadFile();
     mStrSaveAtlasToFile = settings_->atlasSaveFile();
 
     cout << (*settings_) << endl;
